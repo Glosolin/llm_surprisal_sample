@@ -1,7 +1,19 @@
 # llm_surprisal_sample
+### Background:   
+Recent findings show that larger and more accurate language models like GPT-2, despite having lower perplexity, generates surprisal estimates that are not as effective in predicting human reading times and eye-gaze durations, challenging the “larger is better” trend in NLP.  
+
+The objective of our project is to investigate the underlying causes of the diminished accuracy in predicting human reading times by more complex language models.  We hypothesize that appropriate **sampling methods** could potentially enhance the large language models’ performance in surprisal study, because sampling methods, such as **top-k sampling**, is implemented by zeroing out the probabilities for tokens below the k-th one, which will re-weight token logits (used
+to calculate surprisal estimates) by removing noise. 
+
+Our study is particularly focused on assessing whether the sampling methodologies influence the efficacy of the advanced language models in accurately predicting human reading times.
+
+Authors: Meiyu (Emily) Li, Yuwen Shen, Tongyu Zhao, Zehui (Bella) Gu
+***
+The **main_sample.py** is designed for calculating surprisal using autoregressive language models (LMs) from the Huggingface transformers library. Its primary objective is to test the effects of several sampling methods (top-k, top-p, temperature) on surprisal calculation. 
+
 please use the following command:  
 ```
-python main_sample.py <dataset_name>.sentitems <model_name> <sampling_method> > <dataset_name>.<model_name>.<sampling_value>.surprisal
+python main_sample.py [dataset_name].sentitems [model_name] [sampling_method] [sample_value] > [dataset_name].[model_name].[sampling_value].[sample_value].surprisal
 ```
 An example would be: 
 ```
@@ -10,7 +22,7 @@ python main_sample.py naturalstories.sentitems gpt2 top-k > naturalstories.gpt2.
 
 dataset_name:  
 ```
-naturalstories.sentitems, dundee.sentitems
+naturalstories, dundee
 ```
 
 model_name: 
